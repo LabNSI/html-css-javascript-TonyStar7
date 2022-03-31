@@ -1,7 +1,7 @@
 function init () {
   // La fonction résultat() est exécutée lors de la soumission du formulaire
   // Indiquer le nom du formilaire et l'évenement correspondant à sa soumission
-  document.getElementById("nom_du_formulaire")._evenement_soumission = resultat;
+  document.getElementById("formulary")._evenement_soumission = resultat;
 
   //Récupération des variables et de leurs valeurs dans l'URL :
   // ex : //formulaire.html?prenom=Albert&nom=Dupond&classe=1G2&LITT_ANGLAIS=LITT.+ANGLAIS&NUMERIQUE_SC_INFORM=NUMERIQUE+SC.INFORM
@@ -13,40 +13,40 @@ function init () {
 
   // Compléter le test
   // si sReq n'est pas une chaine vide
-  if(sReq ______)
+  if(sReq != "")
   {
       const good = "NUMERIQUE_SC_INFORM";
       // La fonction split découpe une chaine de caractères (string) et retourne un tableau (array)
       // Quel caractère sépare les ensemble variable=valeur ?
       // Utiliser ce caractère pour découper la chaine sReq
-      var aReq = sReq.split("__");
+      var aReq = sReq.split("&");
       var mess = "";
       // Boucle sur les variables
       var aVar = [];
       for (var i=0;i<aReq.length;i++) {
         // Quel caractère sépare une variable de sa valeur ?
         // Utiliser ce caractère pour découper la chaine aReq[i]
-        aVar[i] = aReq[i].split("__");
+        aVar[i] = aReq[i].split("=");
         // Observer dans la console
         console.log("aVar["+i+"][0] = "+aVar[i][0]+"   "+"aVar["+i+"][1] = "+aVar[i][1]);
       }
       //Construire la chaine suivante en utilisant les valeurs récupérées
       // mess = valeur_du prenom + " " + valeur_du_nom + " " + valeur_de_classe + " : "
-      mess = _______ + " " + ______ + " de " + ______ + " : ";
+      mess =  + " " +  + " de " +  + " : ";
 
       //Si au moins une des spécialités est = "NUMERIQUE_SC_INFORM"
       // Ajouter à mess "Bon choix !"
       // Sinon ajouter à mess "Mauvais choix !"
       if(aVar[3][0] == good || aVar[4][0] == good)
       {
-        mess += ______________;
+        mess += "Bon choix !";
       }
       else {
-        mess += ______________;
+        mess += "Mauvais choix !";
       }
 
       // Ajouter le code HTML mess à l'élément d'ID='resultat'
-      document.getElementById('______')._________ = _______;
+      document.getElementById('resultat').innerHTML = mess;
   }
 }
 
@@ -60,12 +60,12 @@ function resultat() {
   var message = "Compléter les champs :";
 
   // Vérifier si le prénom a été saisie. Si non (chaine vide), ajouter "\n - Prénom" à message
-  if(f.elements["prenom"].value == "")  {
+  if(f.elements["prenom"].value == "prenom")  {
     message += "\n- Prénom";
   }
 
   // ?
-  if(f.elements["nom"].value == "")  {
+  if(f.elements["nom"].value == "nom")  {
     message += "\n- Nom";
   }
 
@@ -111,5 +111,5 @@ function resultat() {
   alert(message);
 }
 
-// Exécuert init() au chargement de la page
+// Exécuter init() au chargement de la page
 window.onload = init;
